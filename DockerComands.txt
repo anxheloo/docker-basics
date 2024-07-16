@@ -1,0 +1,36 @@
+1-After creating the dockerfile inside project and specifying its layers we use: docker build -t myapp . ||  docker build -t myapp:v1 . -> (-t) stands for specifying a tag name , the (.) in the end is to specify the relative path of the dockerfile
+
+	
+2- To run the container from terminal -> "docker images" to list all images, than docker run --name (container name) -p 4000:4000 -d (image name or id) || docker run --name myapp_c -p 4000:4000 myapp:v1
+		- (-p) to specify the port , the nr on the right is the exposed port on our dockerfile, the nr on the left is the port we want to map to the exposed one.
+
+		-the (-d) stands for detaching our terminal so it is no more blocked when we run the container
+
+		- we can add (--rm ) between port numbers and image name, to remove container once we stops it.
+
+3-To get processes (Containers) running -> docker ps , to get all containers even those not running we use : docker ps -a
+
+4-To stop e process (Container) -> docker stop (container name or id)
+
+5- To start again an existing process (Container) -> docker start ( name or id of the container)
+
+
+
+TO REMOVE AN IMAGE: 
+	-docker image rm (name of image)
+	-docker image rm (name of image) -f -> to force remove an image that is in use 
+
+	-the other way without using (-f) is to delete its container first and then the image itself -> docker container rm (name of container)
+
+
+TO REMOVE EVERYTHING : docker system prune -a
+
+
+
+DOCKER COMPOSE: 
+
+After configuring the docker-compose.yaml file , to run it we use in terminal : docker-compose up
+To close docker-compose : docker-compose down
+
+To close and remove everything : docker-compose down --rmi all -v  -> (-v) stands for volumes
+
